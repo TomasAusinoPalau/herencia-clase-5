@@ -35,20 +35,22 @@ public class Productor extends User implements IRenovable {
             sustancias.add(sustancia);
     }
 
-    public void manipularTramite(Tramite tramite) {
+    public boolean manipularTramite(Tramite tramite) {
         for(Sustancia sustancia : sustancias){
             if(tramite.getSustanciaSolicitada().equals(sustancia.getNombre())){
                 if(sustancia.getCantidad() > tramite.getCantidad()){
+
                     sustancia.setCantidad(sustancia.getCantidad() - tramite.getCantidad());
                     aceptarAltaTramite(tramite.getNumeroTramite());
                     enviarProducto(tramite.getSustanciaSolicitada());
-                    break;
+                    return true;
                 } else {
                     rechazarAltaTramite(tramite.getNumeroTramite());
-                    break;
+                    return false;
                 }
             }
-        }  
+        }
+        return false;  
     }
 
     private void enviarProducto(String sustancia) {

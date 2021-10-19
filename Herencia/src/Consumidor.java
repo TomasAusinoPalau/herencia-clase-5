@@ -10,16 +10,27 @@ public class Consumidor extends User implements IRenovable {
         this.fechaRenovacion = new Date();
     }
 
-    public void iniciarTramite(int cantidad, Date fecha, String sustanciaSolicitada, Productor productor) {
+    public Tramite iniciarTramite(int cantidad, Date fecha, String sustanciaSolicitada, Productor productor) {
         Tramite tramite = new Tramite(cantidad, fecha, sustanciaSolicitada, productor, this);
-        solicitarSustancia(tramite);
+        
+        boolean validacion = solicitarSustancia(tramite);
+        if(validacion) {
+            return tramite;
+        } else {
+            return null;
+        }
     }
-    private void solicitarSustancia(Tramite tramite) {
-        tramite.getProductor().manipularTramite(tramite);
+
+    private boolean solicitarSustancia(Tramite tramite) {
+       return tramite.getProductor().manipularTramite(tramite);
     }
     
-    public void cerrarTramite(int idTramite) {
-        System.out.println("El tramite "+ idTramite + " fue cerrado y la sustancia recibida");
+    public void cerrarTramite(Tramite tramite) {
+        if(tramite != null) {
+            System.out.println("El tramite "+ tramite.getNumeroTramite() + " fue cerrado y la sustancia "+ tramite.getSustanciaSolicitada() +" recibida");
+        } else {
+            System.out.println("El trámite no es válido");
+        }
     }
 
     public Date getFechaRenovacion() {

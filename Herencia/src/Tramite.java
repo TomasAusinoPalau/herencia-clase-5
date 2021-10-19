@@ -16,9 +16,17 @@ public class Tramite {
         this.productor = productor;
         this.numeroTramite = count.incrementAndGet();
         this.comprador = comprador;
+         
     }
 
+    public Consumidor getComprador() {
+        return comprador;
+    }
 
+    public void setComprador(Consumidor comprador) {
+        this.comprador = comprador;
+    }
+    
     public int getCantidad() {
         return cantidad;
     }
