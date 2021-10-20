@@ -27,7 +27,7 @@ public class App {
 
         Date day = new Date(20210918);
 
-        Tramite tramite1 = consumer.iniciarTramite(15, day, "Agua", producer);
+        Tramite tramite1 = consumer.iniciarTramite(1005, day, "Agua", producer);
         consumer.cerrarTramite(tramite1);
         
         Tramite tramite2 = consumer.iniciarTramite(10, day, "Nitrogeno", producer);

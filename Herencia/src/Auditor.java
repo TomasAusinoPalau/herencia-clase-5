@@ -14,7 +14,6 @@ public class Auditor extends User {
 
     public void altaSustancia(Sustancia sustancia, Productor productor) {
         productor.añadirSustancia(sustancia);
-        enviarMailProductores();
     }
 
     public void bajaSustancia() {
