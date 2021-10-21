@@ -49,10 +49,6 @@ public class Productor extends User implements IRenovable {
                     return false;
                 }
             }
-<<<<<<< HEAD
-=======
-
->>>>>>> e940588 (bugfix return of iniciarTramite)
         }
         return false;
     }
